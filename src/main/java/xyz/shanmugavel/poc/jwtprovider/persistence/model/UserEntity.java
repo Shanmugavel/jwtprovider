@@ -19,7 +19,7 @@ import lombok.ToString;
 @Entity
 @Table(name="USERS")
 @ToString
-public class User extends BaseEntity {
+public class UserEntity extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -32,10 +32,10 @@ public class User extends BaseEntity {
 	@Column(name="STATUS", nullable=false,length=25)
 	private String status;
 
-	public User() {
+	public UserEntity() {
 	}
 	
-	public User(String firstName, String lastName, String status) {
+	public UserEntity(String firstName, String lastName, String status) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;

@@ -5,7 +5,7 @@ package xyz.shanmugavel.poc.jwtprovider.service;
 
 import java.util.List;
 
-import xyz.shanmugavel.poc.jwtprovider.persistence.model.User;
+import xyz.shanmugavel.poc.jwtprovider.web.dto.User;
 
 /**
  * @author shanmugavelsundaramoorthy

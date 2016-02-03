@@ -10,8 +10,8 @@
     </Appenders>
     <Loggers>
     	<Logger name="org.springframework" level="info"/>
-    	<Logger name="org.springframework.orm.jpa" level="debug"/>
-        <Root level="debug">
+    	<Logger name="org.springframework.orm.jpa" level="info"/>
+        <Root level="info">
             <AppenderRef ref="Console" />
             <!-- <AppenderRef ref="MyFile"/> -->
         </Root>
