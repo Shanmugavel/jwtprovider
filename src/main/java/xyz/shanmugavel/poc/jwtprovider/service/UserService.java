@@ -3,6 +3,7 @@
  */
 package xyz.shanmugavel.poc.jwtprovider.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class UserService implements IUserService {
 	public User create(User entity) {
 		log.info("Saving... {}", entity);
 		UserEntity usrEntity = modelMapper.map(entity, UserEntity.class);
+		usrEntity.setCreateDate(LocalDateTime.now());
 		userRepo.save(usrEntity);
 		return modelMapper.map(usrEntity, User.class);
 	}

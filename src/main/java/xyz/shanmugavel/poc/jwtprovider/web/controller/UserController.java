@@ -9,6 +9,7 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +31,7 @@ public class UserController {
 	private IUserService userSvc;
 	
 	@RequestMapping(produces = {MediaType.APPLICATION_JSON}, consumes={MediaType.APPLICATION_JSON}, method = {RequestMethod.POST})
-	public Response createUser(User user) {
+	public Response createUser(@RequestBody User user) {
 		log.info("Before Creation User={}", user);
 		user = userSvc.create(user);
 		log.info("After creation User={}", user);
