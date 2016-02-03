@@ -3,6 +3,8 @@
  */
 package xyz.shanmugavel.poc.jwtprovider;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -38,6 +40,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 		user.setFirstName("Shanmugavel");
 		user.setLastName("Sundaramoorthy");
 		user.setStatus("Active");
+		user.setCreateDate(LocalDateTime.now());
 		user = userSvc.create(user);
 		log.info("User={}", user);
 		log.info("Before Deletion AllUsers={}", userSvc.getAllUsers());
