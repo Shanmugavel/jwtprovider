@@ -35,6 +35,9 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 		log.info("DecodedKey={}", KeyUtil.decodeKey(env.getProperty("SigningKey")));
 		log.info("DATABASE_URL={}", env.getProperty("DATABASE_URL"));
 		User user = new User();
+		user.setFirstName("Shanmugavel");
+		user.setLastName("Sundaramoorthy");
+		user.setStatus("Active");
 		user = userSvc.create(user);
 		log.info("User={}", user);
 		log.info("Before Deletion AllUsers={}", userSvc.getAllUsers());
