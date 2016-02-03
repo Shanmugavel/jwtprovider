@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.ToString;
 
@@ -16,6 +17,7 @@ import lombok.ToString;
  *
  */
 @Entity
+@Table(name="USERS")
 @ToString
 public class User extends BaseEntity {
 
