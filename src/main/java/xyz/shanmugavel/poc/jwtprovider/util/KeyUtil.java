@@ -40,8 +40,8 @@ public class KeyUtil {
 	
 	public static String createJWT(JWTModel jwtToken, String encodedKey) {
 		JwtBuilder builder  = Jwts.builder().setIssuer(jwtToken.getIssuer())
-				.setSubject(jwtToken.getSubject()).setIssuedAt(Date.from(ZonedDateTime.now(Clock.systemUTC()).plusMinutes(EXPIRATION_TIME_IN_MNS).toInstant()))
-				.setExpiration(Date.from(ZonedDateTime.now(Clock.systemUTC()).toInstant())).signWith(jwtToken.getSignatureAlg(), encodedKey);
+				.setSubject(jwtToken.getSubject()).setIssuedAt(Date.from(ZonedDateTime.now(Clock.systemUTC()).toInstant()))
+				.setExpiration(Date.from(ZonedDateTime.now(Clock.systemUTC()).plusMinutes(EXPIRATION_TIME_IN_MNS).toInstant())).signWith(jwtToken.getSignatureAlg(), encodedKey);
 		log.info(builder.toString());
 		return builder.compact();
 	}
