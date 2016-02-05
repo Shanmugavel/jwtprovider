@@ -8,6 +8,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +32,13 @@ public class UserController {
 	private IUserService userSvc;
 	
 	@RequestMapping(produces = {MediaType.APPLICATION_JSON}, consumes={MediaType.APPLICATION_JSON}, method = {RequestMethod.POST})
-	public Response createUser(@RequestBody User user) {
+	public ResponseEntity<User> createUser(@RequestBody User user) {
 		log.info("Before Creation User={}", user);
 		user = userSvc.create(user);
 		log.info("After creation User={}", user);
 		UriBuilder uriBuilder = UriBuilder.fromUri("https://evening-headland-42529.herokuapp.com/user/{userId}");
-		return Response.created(uriBuilder.build(user.getId())).entity(user).build();
+		return  ResponseEntity.created(uriBuilder.build(user.getId())).body(user);
+		//return ResponseEntity<User>.created(uriBuilder.build(user.getId())).entity(user).build();
 	}
 	
 	@RequestMapping(path="/{userId}", produces = {MediaType.APPLICATION_JSON}, consumes={MediaType.APPLICATION_JSON}, method = {RequestMethod.GET})
