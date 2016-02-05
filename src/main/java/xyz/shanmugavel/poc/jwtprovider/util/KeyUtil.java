@@ -51,7 +51,7 @@ public class KeyUtil {
 		Claims claims = Jwts.parser().setSigningKey(encodedKey).parseClaimsJws(jwt).getBody();
 		log.info("issuer={}, subject={} issuedAt={} expDt={}", claims.getIssuer(), claims.getSubject(), claims.getIssuedAt(), claims.getExpiration());
 		if ("Shan".equals(claims.getIssuer())) {
-			
+			isValid = true;
 		}
 		
 		return isValid;
