@@ -8,6 +8,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,10 +43,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(path="/{userId}", produces = {MediaType.APPLICATION_JSON}, consumes={MediaType.APPLICATION_JSON}, method = {RequestMethod.GET})
-	public Response getUser(@PathVariable Long userId) {
+	public ResponseEntity<User> getUser(@PathVariable Long userId) {
 		log.info("UserId={}", userId);
 		User user = userSvc.findById(userId);
 		log.info("User={}", user);
-		return Response.ok(user).build();
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 }
