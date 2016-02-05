@@ -32,11 +32,12 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 		log.info("DecodedKey={}", KeyUtil.decodeKey(env.getProperty("SigningKey")));
 		log.info("DATABASE_URL={}", env.getProperty("DATABASE_URL"));
 		JWTModel  jwt = new JWTModel();
-		jwt.setId("");
-		jwt.setIssuer("Shaan");
+		jwt.setIssuer("Shan");
 		jwt.setSubject("UIApp");
 		jwt.setSignatureAlg(SignatureAlgorithm.HS512);
-		log.info("GeneratedJWT={}", KeyUtil.createJWT(jwt, env.getProperty("SigningKey")));
+		String jwtoken = KeyUtil.createJWT(jwt, env.getProperty("SigningKey"));
+		log.info("GeneratedJWT={}", jwtoken);
+		log.info("isValidJWT={}", KeyUtil.isValidJWT(jwtoken, env.getProperty("SigningKey")) );
 		/*User user = new User();
 		user.setFirstName("Shanmugavel");
 		user.setLastName("Sundaramoorthy");

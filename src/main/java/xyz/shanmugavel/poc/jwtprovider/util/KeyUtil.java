@@ -9,6 +9,7 @@ import java.time.ZonedDateTime;
 import java.util.Base64;
 import java.util.Date;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -38,10 +39,21 @@ public class KeyUtil {
 	}
 	
 	public static String createJWT(JWTModel jwtToken, String encodedKey) {
-		JwtBuilder builder  = Jwts.builder().setId(jwtToken.getId()).setIssuer(jwtToken.getIssuer())
+		JwtBuilder builder  = Jwts.builder().setIssuer(jwtToken.getIssuer())
 				.setSubject(jwtToken.getSubject()).setIssuedAt(Date.from(ZonedDateTime.now(Clock.systemUTC()).plusMinutes(EXPIRATION_TIME_IN_MNS).toInstant()))
 				.setExpiration(Date.from(ZonedDateTime.now(Clock.systemUTC()).toInstant())).signWith(jwtToken.getSignatureAlg(), encodedKey);
 		log.info(builder.toString());
 		return builder.compact();
+	}
+	
+	public static boolean isValidJWT(String jwt, String encodedKey) {
+		boolean isValid = false;
+		Claims claims = Jwts.parser().setSigningKey(encodedKey).parseClaimsJws(jwt).getBody();
+		log.info("issuer={}, subject={} issuedAt={} expDt={}", claims.getIssuer(), claims.getSubject(), claims.getIssuedAt(), claims.getExpiration());
+		if ("Shan".equals(claims.getIssuer())) {
+			
+		}
+		
+		return isValid;
 	}
 }

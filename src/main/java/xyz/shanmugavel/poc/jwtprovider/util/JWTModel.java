@@ -19,7 +19,6 @@ public class JWTModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Getter @Setter private String id;
 	@Getter @Setter private String issuer;
 	@Getter @Setter private String subject;
 	@Getter @Setter private long expirationDate;
