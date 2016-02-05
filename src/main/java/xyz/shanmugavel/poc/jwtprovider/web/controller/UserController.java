@@ -4,7 +4,6 @@
 package xyz.shanmugavel.poc.jwtprovider.web.controller;
 
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,6 @@ public class UserController {
 		log.info("After creation User={}", user);
 		UriBuilder uriBuilder = UriBuilder.fromUri("https://evening-headland-42529.herokuapp.com/user/{userId}");
 		return  ResponseEntity.created(uriBuilder.build(user.getId())).body(user);
-		//return ResponseEntity<User>.created(uriBuilder.build(user.getId())).entity(user).build();
 	}
 	
 	@RequestMapping(path="/{userId}", produces = {MediaType.APPLICATION_JSON}, consumes={MediaType.APPLICATION_JSON}, method = {RequestMethod.GET})
