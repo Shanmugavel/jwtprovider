@@ -17,6 +17,7 @@
 		<lombok.version>1.16.6</lombok.version>
 		<jjwt.version>0.6.0</jjwt.version>
 		<modelmapper.version>1.1.0</modelmapper.version>
+		<stormpath.version>1.0.RC8.3</stormpath.version>
 	</properties>
 
 	<parent>
@@ -69,6 +70,10 @@
        		<artifactId>scala-library</artifactId>
        		<version>2.11.0</version>
        	</dependency>
+ 	    <dependency>
+           <groupId>com.stormpath.spring</groupId>
+           <artifactId>stormpath-default-spring-boot-starter</artifactId>
+        </dependency>  	
   </dependencies>
   <dependencyManagement>
 	  <dependencies>
@@ -87,6 +92,11 @@
 			    <artifactId>modelmapper-spring-boot-starter</artifactId>
 			    <version>${modelmapper.version}</version>
 			</dependency>
+	        <dependency>
+	            <groupId>com.stormpath.spring</groupId>
+	            <artifactId>stormpath-default-spring-boot-starter</artifactId>
+	            <version>${stormpath.version}</version>
+	        </dependency>		
 	  </dependencies>
   </dependencyManagement>
   
