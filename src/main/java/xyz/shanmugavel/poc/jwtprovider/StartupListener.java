@@ -38,6 +38,14 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 		String jwtoken = KeyUtil.createJWT(jwt, env.getProperty("SigningKey"));
 		log.info("GeneratedJWT={}", jwtoken);
 		log.info("isValidJWT={}", KeyUtil.isValidJWT(jwtoken, env.getProperty("SigningKey")) );
+		log.info("stormpath.web.accessToken.enabled={}", env.getProperty("stormpath.web.accessToken.enabled"));
+		log.info("stormpath.spring.security.enabled={}", env.getProperty("stormpath.spring.security.enabled"));
+		log.info("stormpath.web.login.enabled={}", env.getProperty("stormpath.web.login.enabled"));
+		log.info("stormpath.web.enabled={}", env.getProperty("stormpath.web.enabled"));
+		log.info("stormpath.web.csrf.token.enabled={}", env.getProperty("stormpath.web.csrf.token.enabled"));
+		log.info("stormpath.web.idSite.enabled={}", env.getProperty("stormpath.web.idSite.enabled"));
+		log.info("stormpath.web.saml.enabled={}", env.getProperty("stormpath.web.saml.enabled"));
+		log.info("stormpath.web.change.enabled={}", env.getProperty("stormpath.web.change.enabled"));
 		/*User user = new User();
 		user.setFirstName("Shanmugavel");
 		user.setLastName("Sundaramoorthy");
